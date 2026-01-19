@@ -1,36 +1,80 @@
+import { useEffect, useState } from "react"
 import { Moon, Sun } from "lucide-react"
 
+const sections = [
+  { id: "home", label: "Home" },
+  { id: "experience", label: "Experience" },
+  { id: "projects", label: "Projects" },
+  { id: "skills", label: "Skills" },
+  { id: "education", label: "Education" },
+  { id: "volunteer", label: "Volunteer" },
+]
+
 function Navbar({ theme, setTheme }) {
+  const [activeSection, setActiveSection] = useState("home")
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + 120
+
+      for (const section of sections) {
+        const el = document.getElementById(section.id)
+        if (!el) continue
+
+        const offsetTop = el.offsetTop
+        const offsetHeight = el.offsetHeight
+
+        if (
+          scrollPosition >= offsetTop &&
+          scrollPosition < offsetTop + offsetHeight
+        ) {
+          setActiveSection(section.id)
+        }
+      }
+    }
+
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
   return (
     <nav className="sticky top-0 z-50 bg-neutral-50/80 dark:bg-neutral-950/80 backdrop-blur border-b border-neutral-200 dark:border-neutral-800">
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-        
-        {/* Name + Role */}
-        <div className="flex flex-col leading-tight">
-          <span className="text-sm font-semibold tracking-tight">
-            Rohan Shrivastava
-          </span>
-          <span className="text-xs text-neutral-500 dark:text-neutral-400">
-            Web Developer
-          </span>
-        </div>
 
-        {/* Navigation */}
+        {/* Brand */}
+        <a
+          href="#home"
+          className="text-sm font-semibold tracking-tight"
+        >
+          Rohan.dev
+        </a>
+
+        {/* Links */}
         <div className="flex items-center gap-6 text-sm">
-          <a href="#experience" className="opacity-70 hover:opacity-100 transition">
-            Experience
-          </a>
-          <a href="#projects" className="opacity-70 hover:opacity-100 transition">
-            Projects
-          </a>
-          <a href="#skills" className="opacity-70 hover:opacity-100 transition">
-            Skills
-          </a>
-          <a href="#education" className="opacity-70 hover:opacity-100 transition">
-            Education
-          </a>
+          {sections.map((section) => {
+            const isActive = activeSection === section.id
 
-          {/* Theme Toggle */}
+            return (
+              <a
+                key={section.id}
+                href={`#${section.id}`}
+                className={`transition relative
+                  ${
+                    isActive
+                      ? "font-medium text-neutral-900 dark:text-neutral-100"
+                      : "opacity-70 hover:opacity-100"
+                  }
+                `}
+              >
+                {section.label}
+                {isActive && (
+                  <span className="absolute -bottom-1 left-0 w-full h-px bg-current" />
+                )}
+              </a>
+            )
+          })}
+
+          {/* Theme toggle */}
           <button
             onClick={() => setTheme(theme === "light" ? "dark" : "light")}
             className="ml-2 p-2 rounded-md hover:bg-neutral-200 dark:hover:bg-neutral-800 transition"
