@@ -1,5 +1,7 @@
 import { useState } from "react"
 import { MessageCircle, X, ArrowUpRight } from "lucide-react"
+import { askAI } from "../utils/openai"
+import { resumeData } from "../data/resumeData"
 
 function PortfolioAssistant() {
   const [open, setOpen] = useState(false)
