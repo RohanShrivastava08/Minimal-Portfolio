@@ -90,17 +90,30 @@ Focused on building clean, scalable, and user-friendly interfaces.`,
   ],
 
   education: [
-    {
-      institute: "Manipal University Jaipur",
-      duration: "Aug 2023 – Aug 2025",
-      detail: "IT & Fintech (Distance Learning)",
-    },
-    {
-      institute: "Bhilai Institute of Technology, Durg",
-      duration: "Aug 2018 – Aug 2022",
-      detail: "Bachelor of Technology in Computer Science Engineering (76%)",
-    },
-  ],
+  {
+    course: "Master of Science",
+    stream: "IT & Fintech (Distance Learning)",
+    institute: "Manipal University Jaipur",
+    duration: "Aug 2023 – Aug 2025",
+    score: null,
+    description: [
+      "Focused on emerging technologies at the intersection of IT and finance.",
+      "Built strong understanding of fintech systems, digital platforms, and modern software practices."
+    ],
+  },
+  {
+    course: "Bachelor of Technology",
+    stream: "Computer Science Engineering",
+    institute: "Bhilai Institute of Technology, Durg",
+    duration: "Aug 2018 – Aug 2022",
+    score: "76%",
+    description: [
+      "Developed a solid foundation in data structures, algorithms, and software engineering.",
+      "Gained hands-on experience in web development and problem solving."
+    ],
+  },
+],
+
 
   volunteer: [
     {
