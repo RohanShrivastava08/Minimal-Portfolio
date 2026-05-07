@@ -30,6 +30,7 @@
 
 ## 📂 Project Structure
 
+```bash
 src/
 ├── components/ # Shared UI components
 ├── pages/ # Home, Experience, Projects, Skills, etc.
@@ -37,6 +38,7 @@ src/
 ├── ai/ # Portfolio Assistant logic
 ├── App.jsx
 ├── main.jsx
+```
 
 ---
 
@@ -88,3 +90,4 @@ Clone the repository:
 ```bash
 git clone https://github.com/your-username/minimal-ai-portfolio.git
 cd minimal-ai-portfolio
+```
